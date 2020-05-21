@@ -13,10 +13,10 @@ public class Froggy {
 	// attributes of a frog
 
 	private int x, y; // Position of frog
-	private int vx, vy;
+	private int vx, vy; //velocity variables
 	private boolean alive; // lives
 	private int width; // the size of frog
-	private int hieght;
+	private int height;
 	private String fileName;
 	private Image img; // image of the frog
 
@@ -33,7 +33,7 @@ public class Froggy {
 		vx = 0;
 		vy = 0;
 		width = 50;
-		hieght = 50;
+		height = 50;
 
 		img = getImage(fileName);
 		init(x, y);
@@ -49,17 +49,17 @@ public class Froggy {
 	}
 
 	public int getHieght() {
-		return hieght;
+		return height;
 	}
 
 	public void setHieght(int hieght) {
-		this.hieght = hieght;
+		this.height = hieght;
 	}
 
 	public boolean collided(int ox, int oy, int ow, int oh) {
 
 		Rectangle obs = new Rectangle(ox, oy, ow, oh);
-		Rectangle froggy = new Rectangle(x, y, width, hieght);
+		Rectangle froggy = new Rectangle(x, y, width, height);
 		System.out.println(obs);
 		System.out.println(froggy);
 		return obs.intersects(froggy);
@@ -74,6 +74,27 @@ public class Froggy {
 		tx.setToTranslation(x, y);
 
 	}
+	
+	public void hop(int dir) {
+		
+		switch(dir){
+		case 0:			//up
+			y-=height; //will cause hoppings
+			break;
+		case 1:			//down
+			y+=height;
+			break;
+		case 2:			//left
+			break;		
+		case 3:			//right
+			break;
+		}
+
+		tx.setToTranslation(x, y);
+
+	}
+	
+	
 
 	private AffineTransform tx = AffineTransform.getTranslateInstance(x, y);
 

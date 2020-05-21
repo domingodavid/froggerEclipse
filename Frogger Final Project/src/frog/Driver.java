@@ -1,4 +1,6 @@
 
+//https://github.com/domingodavid/froggerEclipse
+
 package frog;
 
 import java.awt.Color;
@@ -22,8 +24,7 @@ import javax.swing.Timer;
 import java.awt.image.*;
 import java.awt.geom.AffineTransform;
 
-public class Driver extends JPanel implements ActionListener, KeyListener
-		 {
+public class Driver extends JPanel implements ActionListener, KeyListener {
 
 	int screen_width = 900;
 	int screen_height = 900;
@@ -40,7 +41,8 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 	String win = "";
 	String lost = "";
 
-	// ****************************paint method******************************************
+	// ****************************paint
+	// method******************************************
 	public void paint(Graphics g) {
 
 		super.paintComponent(g);
@@ -56,7 +58,7 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 			car2[i].paint(g);
 		}
 
-		//paint and update froggy 
+		// paint and update froggy
 		froggy.paint(g);
 
 		// car one
@@ -65,8 +67,8 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 			lose = " u lost";
 			g.drawString(lose, 0, 50);
 		}
-		
-		//resetting
+
+		// resetting
 		if (my_variable > 0 && froggy.getY() == 0) {
 			lose = "";
 			win = "u won!";
@@ -90,7 +92,7 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 
 			car2[i].setVx(-3);
 			car2[i].move();
-			
+
 		}
 
 	}
@@ -105,23 +107,33 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 		Driver d = new Driver();
 	}
 
+	/* *
+	 * Used to setup all of the objects on the screen
+	 */
 	public Driver() {
 		JFrame f = new JFrame();
 		f.setTitle("Frogger");
 		f.setSize(screen_width, screen_height);
 		f.setResizable(false);
-		f.addKeyListener(this);
+		f.addKeyListener(this); //listen for keypresses on this frame
 
 		// sprite instantiation
-
 		froggy = new Froggy("frogpic.png");
 
 		for (int i = 0; i < car2.length; i++) {
 			car2[i] = new Car("carpic.png", i * 250 + 400, 350);
 		}
 
-		//Add background
+		// leave room here to instantiate a 2nd "row" of obstacles
+		// aka other cars, bulldozers, trucks, turtules, logs etc
+		
+		
+		
+		
+		// Add background
 		bg = new Background("background1.png");
+		
+		
 		// do not add to frame, call paint on
 		// these objects in paint method
 
@@ -142,19 +154,34 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 		// 38 up ,
 		// 40 down,
 		// 39 ->
-		System.out.println("key is pressed");
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			froggy.setVy(-5);
-		}
 
+		switch(e.getKeyCode()) {
+		
+		case KeyEvent.VK_W:		//up
+			froggy.hop(0);
+			break;
+		
+		case KeyEvent.VK_S:		//down
+			froggy.hop(1);
+			break;
+		
+		// handle going left and right
+		// A and D keys
+			
+			
+		}
+		
+		
+		
 		
 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		/* turn off velocity for Frog if you don't want it moving when
-		 * you have stopped pressing the keys
+		/*
+		 * turn off velocity for Frog if you don't want it moving when you have stopped
+		 * pressing the keys
 		 */
 		if (e.getKeyCode() == 38) {
 			froggy.setVy(0);
@@ -166,7 +193,7 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 			froggy.setVx(0);
 		}
 
-		//do the same thing for the other keys
+		// do the same thing for the other keys
 	}
 
 	@Override
@@ -174,7 +201,5 @@ public class Driver extends JPanel implements ActionListener, KeyListener
 		// TODO Auto-generated method stub
 
 	}
-
-	
 
 }

@@ -14,7 +14,6 @@ public class Background {
 
 	public Background(String fileName) {
 		// assignment statements for attributes
-
 		x = 0;
 		y = 0;
 		img = getImage(fileName);
