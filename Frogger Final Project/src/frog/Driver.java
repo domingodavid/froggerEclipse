@@ -162,7 +162,6 @@ public class Driver extends JPanel implements ActionListener, KeyListener {
 			break;
 		
 		case KeyEvent.VK_S:		//down
-			froggy.hop(1);
 			break;
 		
 		// handle going left and right

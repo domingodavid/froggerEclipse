@@ -79,10 +79,8 @@ public class Froggy {
 		
 		switch(dir){
 		case 0:			//up
-			y-=height; //will cause hoppings
 			break;
 		case 1:			//down
-			y+=height;
 			break;
 		case 2:			//left
 			break;		
