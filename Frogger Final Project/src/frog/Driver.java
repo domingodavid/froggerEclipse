@@ -27,11 +27,10 @@ import java.awt.geom.AffineTransform;
 public class Driver extends JPanel implements ActionListener, KeyListener {
 
 	int screen_width = 900;
-	int screen_height = 900;
+	int screen_height = 935;
 	Froggy froggy;
 
 	// instantiate objct log
-
 	Car[] car2 = new Car[10];
 
 	Background bg;
@@ -124,7 +123,7 @@ public class Driver extends JPanel implements ActionListener, KeyListener {
 			car2[i] = new Car("carpic.png", i * 250 + 400, 350);
 		}
 
-		// leave room here to instantiate a 2nd "row" of obstacles
+		// leave room here to instantiate other rows of obstacles
 		// aka other cars, bulldozers, trucks, turtules, logs etc
 		
 		
@@ -158,7 +157,7 @@ public class Driver extends JPanel implements ActionListener, KeyListener {
 		switch(e.getKeyCode()) {
 		
 		case KeyEvent.VK_W:		//up
-			froggy.hop(0);
+			froggy.hop(10);
 			break;
 		
 		case KeyEvent.VK_S:		//down

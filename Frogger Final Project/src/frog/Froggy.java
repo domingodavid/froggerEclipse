@@ -48,12 +48,12 @@ public class Froggy {
 		this.width = width;
 	}
 
-	public int getHieght() {
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHieght(int hieght) {
-		this.height = hieght;
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 	public boolean collided(int ox, int oy, int ow, int oh) {
@@ -78,13 +78,16 @@ public class Froggy {
 	public void hop(int dir) {
 		
 		switch(dir){
-		case 0:			//up
+			case 0:			//up
 			break;
-		case 1:			//down
+			
+			case 1:			//down
 			break;
-		case 2:			//left
+			
+			case 2:			//left
 			break;		
-		case 3:			//right
+			
+			case 3:			//right
 			break;
 		}
 
